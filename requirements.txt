@@ -1,0 +1,5 @@
+flask
+openai
+pypdf2
+tiktoken
+flask_sqlalchemy
