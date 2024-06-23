@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Études de Cas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+
+<body>
+    <div id="navbar">
+        <ul>
+            <a href="{{ url_for('index') }}">
+                <li>Accueil</li>
+            </a>
+            <a href="{{ url_for('case_studies') }}">
+                <li>Études de Cas</li>
+            </a>
+            {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('login') }}">
+                <li>Connexion</li>
+            </a>
+            <a href="{{ url_for('register') }}">
+                <li>Inscription</li>
+            </a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}">
+                <li>Déconnexion</li>
+            </a>
+            {% endif %}
+        </ul>
+    </div>
+    <h1>{{ case_study.title }}</h1>
+    <p>{{ case_study.date_posted }}</p>
+    <p>{{ case_study.tag }}</p>
+    <p>{{ case_study.content }}</p>
+    <hr><br>
+    <a href="{{ url_for('take_quiz', id=case_study.id) }}">Passer un quiz</a>
+    <hr><br>
+    {% for comment in comments %}
+    {{ comment.author_name }}<br>
+    {{ comment.timestamp }}<br>
+    {{ comment.content }}<br>
+    <hr><br>
+    {% endfor %}
+    <div>
+        <h3>Créer un Commentaire</h3>
+        <form action="{{ url_for('create_comment', id=case_study.id) }}" method="post" novalidate>
+            {{ comment_form.hidden_tag() }}
+            <p>
+                {{ comment_form.content(size=32) }}
+            </p>
+            <p>{{ comment_form.submit() }}</p>
+        </form>
+    </div>
+
+</body>
+
+</html>

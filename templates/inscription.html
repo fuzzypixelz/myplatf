@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/inscription.css') }}">
 </head>
+
 <body>
     <div class="signup__container">
         <div class="container__child signup__thumbnail">
@@ -15,30 +17,36 @@
                 <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Logo 1">
             </div>
             <div class="thumbnail__content text-center">
-                <h1 class="heading--primary"><strong>Bienvenue sur Centrale de Cas, votre catalyseur d'innovation.</strong></h1>
+                <h1 class="heading--primary"><strong>Bienvenue sur Centrale de Cas, votre catalyseur
+                        d'innovation.</strong></h1>
                 <h2 class="heading--secondary"><strong>
-                    Plongez au cœur de recherches enrichissantes et laissez-vous guider vers des solutions pragmatiques et des décisions éclairées à travers nos analyses détaillées.</h2>
-            </strong>
-                </div>
+                        Plongez au cœur de recherches enrichissantes et laissez-vous guider vers des solutions
+                        pragmatiques et des décisions éclairées à travers nos analyses détaillées.</h2>
+                </strong>
+            </div>
             <div class="signup__overlay"></div>
         </div>
         <div class="container__child signup__form">
             <form action="#">
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="albert.einstein" required />
+                    <input class="form-control" type="text" name="username" id="username" placeholder="albert.einstein"
+                        required />
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control" type="text" name="email" id="email" placeholder="albert.einstein@centrale-casablanca.ma" required />
+                    <input class="form-control" type="text" name="email" id="email"
+                        placeholder="albert.einstein@centrale-casablanca.ma" required />
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="********" required />
+                    <input class="form-control" type="password" name="password" id="password" placeholder="********"
+                        required />
                 </div>
                 <div class="form-group">
                     <label for="passwordRepeat">Confirmer le mot de passe</label>
-                    <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat" placeholder="********" required />
+                    <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat"
+                        placeholder="********" required />
                 </div>
                 <div class="m-t-lg">
                     <ul class="list-inline">
@@ -46,12 +54,13 @@
                             <input class="btn btn--form" type="submit" value="Register" />
                         </li>
                         <li>
-                            <a class="signup__link" href="{{ url_for('accueil') }}">Je suis déjà un membre</a>
+                            <a class="signup__link" href="{{ url_for('index') }}">Je suis déjà un membre</a>
                         </li>
                     </ul>
                 </div>
-            </form>  
+            </form>
         </div>
     </div>
 </body>
+
 </html>

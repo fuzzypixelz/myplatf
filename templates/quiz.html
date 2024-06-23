@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <title>Quiz sur le Micro-Réseau</title>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Exo:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Exo:ital,wght@1,600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
 </head>
 
 <body>
-    <div id="container">       
-	    <div id="haut">
-		    Quiz sur le projet <br />
-		    10 Questions
-	    </div>
-	
+    <div id="container">
+        <div id="haut">
+            Quiz sur le projet <br />
+            10 Questions
+        </div>
+
         <div id="guide">
             <ul>
                 <li><strong>•</strong> Vous avez 15 secondes pour chaque question.</li>
-                <li><strong>•</strong> Une fois que vous avez sélectionné votre réponse, elle ne peut pas être annulée.</li>
+                <li><strong>•</strong> Une fois que vous avez sélectionné votre réponse, elle ne peut pas être annulée.
+                </li>
                 <li><strong>•</strong> Vous obtiendrez des points sur la base de vos réponses correctes.</li>
             </ul>
             <button id="start">Démarrer le quiz</button>
@@ -45,20 +47,21 @@
                 <h4 class="choice_que" id="option4"></h4>
             </div>
         </div>
-        
+
         <div id="result" style="display:none;">
             <h6>Vous avez terminé le quiz</h6>
             <h6 id="points">Votre score est de : 4 sur 10</h6>
             <button id="startAgain">Recommencer</button>
+            <a href="{{ url_for('case_studies') }}">Retour</a>
             <h5>Merci d'avoir participé à ce Quiz.</h5>
         </div>
-        
+
 
     </div>
-    <script src="{{ url_for('static', filename='js/questions.js') }}"></script>
+
+    <script src="{{ url_for('quiz_questions', id=id) }}"></script>
     <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
-        
+
 </body>
+
 </html>
-
-

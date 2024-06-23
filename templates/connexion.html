@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/connexion.css') }}">
 </head>
-<body data-redirect-url="{{ url_for('accueil') }}">
+
+<body data-redirect-url="{{ url_for('index') }}">
     <div class="container">
         <header>
-            <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Logo Centrale de Cas" class="logo">
+            <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png"
+                alt="Logo Centrale de Cas" class="logo">
         </header>
         <main>
             <div class="intro-text">
-                <p>Plongez au cœur de l'ingénierie appliquée avec <strong>"Centrale de Cas"</strong>, votre passerelle vers une immersion totale dans les défis réels de l'industrie. Ici, l'apprentissage transcende les salles de classe traditionnelles, vous propulsant directement au front des innovations et tendances contemporaines du marché du travail. À travers des <strong>études de cas</strong> minutieusement sélectionnées et des projets innovants, "Centrale de Cas" vous offre une plateforme unique pour non seulement apprendre, mais pour apprendre en faisant. Analysez des problèmes concrets engrangeant une compréhension riche et pragmatique de votre spécialité. Rejoignez-nous dans cette aventure d'apprentissage dynamique. Que vous soyez à la recherche d'une connexion plus profonde avec votre futur métier ou désireux d'élargir votre horizon professionnel, "Centrale de Cas" est le tremplin idéal.<br><br> <strong>Connectez-vous ou inscrivez-vous dès maintenant pour commencer votre parcours vers l'excellence.</strong></p>
+                <p>Plongez au cœur de l'ingénierie appliquée avec <strong>"Centrale de Cas"</strong>, votre passerelle
+                    vers une immersion totale dans les défis réels de l'industrie. Ici, l'apprentissage transcende les
+                    salles de classe traditionnelles, vous propulsant directement au front des innovations et tendances
+                    contemporaines du marché du travail. À travers des <strong>études de cas</strong> minutieusement
+                    sélectionnées et des projets innovants, "Centrale de Cas" vous offre une plateforme unique pour non
+                    seulement apprendre, mais pour apprendre en faisant. Analysez des problèmes concrets engrangeant une
+                    compréhension riche et pragmatique de votre spécialité. Rejoignez-nous dans cette aventure
+                    d'apprentissage dynamique. Que vous soyez à la recherche d'une connexion plus profonde avec votre
+                    futur métier ou désireux d'élargir votre horizon professionnel, "Centrale de Cas" est le tremplin
+                    idéal.<br><br> <strong>Connectez-vous ou inscrivez-vous dès maintenant pour commencer votre parcours
+                        vers l'excellence.</strong></p>
             </div>
             <div class="login-form">
                 <h2>Connexion</h2>
@@ -30,11 +43,12 @@
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="rememberMe">
                         <label class="form-check-label" for="rememberMe">Se rappeler de moi</label>
-                    </div>                                                       
+                    </div>
                     <button type="submit" class="action connexion">Se connecter</button>
                 </form>
                 <div class="inscription-link">
-                    <p>Vous n'avez pas de compte ? <a href="{{ url_for('inscription') }}" class="header-link">Inscrivez-vous maintenant !</a>
+                    <p>Vous n'avez pas de compte ? <a href="{{ url_for('inscription') }}"
+                            class="header-link">Inscrivez-vous maintenant !</a>
                     </p>
                 </div>
             </div>
@@ -45,4 +59,5 @@
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>

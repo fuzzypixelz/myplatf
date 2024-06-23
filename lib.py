@@ -65,3 +65,27 @@ def generate_case_study(text):
     except Exception as e:
         return f"Error in generating case study: {str(e)}"
 
+
+def generate_quiz(text):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": f"""À partit de l'étude de cas donnée, générer un quiz sous format JavaScript en définissant une variable applée `MCQS`.
+            `MCQS` est un tableau d'object contenant les clés suivantes (et rien d'autre):
+                - 'question' (la qestion du quiz)
+                - 'choice1' (le premier choix) 
+                - 'choice2' (le deuxième choix) 
+                - 'choice3' (le troisème choix)
+                - 'choice4' (le quatrième choix)
+                - 'answer' (le numéro de la bonne réponse)
+                Les questions doivent être à propos de l'étude de cas suivante: {text}
+            Vous devez donner au moin 5 questions.
+            Vous devez répondre avec un program JavaScript valide (c'est à dire qu'avec du code)."""
+            },
+        ]
+    )
+
+    raw: str = response['choices'][0]['message']['content']
+    raw = raw.replace("```javascript", "")
+    raw = raw.replace("```", "")
+    return raw

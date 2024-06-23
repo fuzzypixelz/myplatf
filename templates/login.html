@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Centrale de Cas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inscription.css') }}">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="signup__container">
+        <div class="container__child signup__thumbnail">
+            <div class="thumbnail__logo">
+                <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Logo 1">
+            </div>
+            <div class="thumbnail__content text-center">
+                <h1 class="heading--primary"><strong>Bienvenue sur Centrale de Cas, votre catalyseur
+                        d'innovation.</strong></h1>
+                <h2 class="heading--secondary"><strong>
+                        Plongez au cœur de recherches enrichissantes et laissez-vous guider vers des solutions
+                        pragmatiques et des décisions éclairées à travers nos analyses détaillées.</h2>
+                </strong>
+            </div>
+            <div class="signup__overlay"></div>
+        </div>
+        <div class="container__child signup__form">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=32) }}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=32) }}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+    </div>
+</body>

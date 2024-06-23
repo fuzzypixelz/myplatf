@@ -8,7 +8,7 @@
     <meta name="description" content="Explorez les différents secteurs avec nos études de cas détaillées." />
     <meta name="author" content="YourName" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="index.css">
     <script src="js/libs/modernizr-2.0.6.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,11 +34,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Centrale de Cas Logo" class="header-logo">
+        <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png"
+            alt="Centrale de Cas Logo" class="header-logo">
         <div class="nav-links">
-            <a href="{{ url_for('accueil') }}" class="header-link">Accueil</a>
+            <a href="{{ url_for('index') }}" class="header-link">Accueil</a>
             <a href="{{ url_for('forum') }}" class="header-link">Forum de Discussion</a>
             <a href="{{ url_for('connexion') }}" class="header-link">Déconnexion</a>
         </div>
@@ -49,30 +51,38 @@
     <div class="main-content">
         <div class="sector" id="sector1">
             <h2>Microgrids: Etude sur les perspectives stratégiques de l'énergie</h2>
-            <a href="{{ url_for('static', filename='pdf/pdf1.pdf') }}" ><i class="fa fa-download"></i>Télécharger le PDF</a>
+            <a href="{{ url_for('static', filename='pdf/pdf1.pdf') }}"><i class="fa fa-download"></i>Télécharger le
+                PDF</a>
             <button class="quiz">Quiz</button>
-            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase') }}'">Étude de Cas</button>
+            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase') }}'">Étude de
+                Cas</button>
             <div class="case-content"></div>
         </div>
         <div class="sector" id="sector2">
             <h2>"Assistant Chargé d'affaires du secteur photovoltaïque" par BERTIN PIERRE</h2>
-            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE4_Bertin_Pierre_rapport.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE4_Bertin_Pierre_rapport.pdf"><i
+                    class="fa fa-download"></i>Télécharger PDF</a>
             <button class="quiz">Quiz</button>
-            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase1') }}'">Étude de Cas</button>
+            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase1') }}'">Étude de
+                Cas</button>
             <div class="case-content"></div>
         </div>
         <div class="sector" id="sector3">
             <h2>Stage énergéticien du bâtiment par CYRIL TOUSSAINT</h2>
-            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE5_Toussaint_Cyril_rapport.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE5_Toussaint_Cyril_rapport.pdf"><i
+                    class="fa fa-download"></i>Télécharger PDF</a>
             <button class="quiz">Quiz</button>
-            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase2') }}'">Étude de Cas</button>
+            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase2') }}'">Étude de
+                Cas</button>
             <div class="case-content"></div>
         </div>
         <div class="sector" id="sector4">
             <h2>Audit énergétique d'un bâtiment de bureaux : Proposition de stratégies de rénovation</h2>
-            <a href="https://matheo.uliege.be/bitstream/2268.2/2404/1/2009_2010_BELLIGOI_Thomas.pdf" download="Nom_du_fichier4.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <a href="https://matheo.uliege.be/bitstream/2268.2/2404/1/2009_2010_BELLIGOI_Thomas.pdf"
+                download="Nom_du_fichier4.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
             <button class="quiz">Quiz</button>
-            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase3') }}'">Étude de Cas</button>
+            <button class="case-study" onclick="window.location.href='{{ url_for('businesscase3') }}'">Étude de
+                Cas</button>
             <div class="case-content"></div>
         </div>
         <!-- Début du code Jinja pour afficher les projets -->
@@ -80,9 +90,11 @@
         <div class="sector">
             <button class="delete-case" onclick="deleteProject({{ project.id }})">&times;</button>
             <h2>{{ project.title }} par {{ project.full_name }}</h2>
-            <a href="{{ url_for('static', filename='uploads/' + project.file_path) }}" download="{{ project.file_path }}"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <a href="{{ url_for('static', filename='uploads/' + project.file_path) }}"
+                download="{{ project.file_path }}"><i class="fa fa-download"></i>Télécharger PDF</a>
             <button class="quiz">Quiz</button>
-            <button class="case-study" onclick="window.location.href='{{ url_for('casia', project_id=project.id) }}'">Étude de Cas</button>
+            <button class="case-study"
+                onclick="window.location.href='{{ url_for('casia', project_id=project.id) }}'">Étude de Cas</button>
             <div class="case-content"></div>
         </div>
         {% endfor %}
@@ -95,7 +107,8 @@
         <div id="quiz-modal" class="popup-form" style="display: none;">
             <div class="form-container">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <iframe id="quiz-iframe" src="{{ url_for('quiz') }}" frameborder="0" style="width:100%; height:80vh;"></iframe>
+                <iframe id="quiz-iframe" src="{{ url_for('quiz') }}" frameborder="0"
+                    style="width:100%; height:80vh;"></iframe>
             </div>
         </div>
 
@@ -104,7 +117,8 @@
             <div class="form-container">
                 <span class="close" onclick="closeModalForm()">&times;</span>
                 <h2>Déposer votre propre rapport de projet</h2>
-                <form id="project-upload-form" action="{{ url_for('energie') }}" method="post" enctype="multipart/form-data">
+                <form id="project-upload-form" action="{{ url_for('energie') }}" method="post"
+                    enctype="multipart/form-data">
                     <div>
                         <label for="full-name">Nom et Prénom:</label>
                         <input type="text" id="full-name" name="full-name" required>
@@ -116,7 +130,8 @@
                     <div>
                         <label for="file-upload"><i class="fa fa-file-pdf-o"></i> Charger un document:</label>
                         <input type="file" id="file-upload" name="file-upload" accept=".pdf" required>
-                        <label class="file-input-label" for="file-upload">Veuillez déposer votre rapport sous format <span class="file-type">.pdf</span></label>
+                        <label class="file-input-label" for="file-upload">Veuillez déposer votre rapport sous format
+                            <span class="file-type">.pdf</span></label>
                     </div>
                     <div>
                         <iframe id="pdf-preview"></iframe>
@@ -127,7 +142,7 @@
                 </form>
                 <div id="file-error-message" style="display: none; color: red; margin-top: 10px;">
                     <i class="fa fa-exclamation-triangle"></i> Veuillez sélectionner un fichier PDF.
-                </div>            
+                </div>
             </div>
         </div>
     </div>
@@ -135,7 +150,7 @@
         <p>&copy; 2024 Centrale de Cas. Tous droits réservés.</p>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const quizUrls = [
                 "{{ url_for('quiz') }}",
                 "{{ url_for('quiz1') }}",
@@ -145,29 +160,29 @@
             const quizButtons = document.querySelectorAll('.quiz');
             const quizModal = document.getElementById('quiz-modal');
             const quizIframe = document.getElementById('quiz-iframe');
-        
+
             quizButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
                     quizIframe.src = quizUrls[index];
                     quizModal.style.display = 'block';
                 });
             });
-        
+
             document.querySelector('.close').addEventListener('click', () => {
                 quizModal.style.display = "none";
             });
-        
+
             window.onclick = (event) => {
                 if (event.target == quizModal) {
                     quizModal.style.display = "none";
                 }
             };
         });
-        
+
         function closeModal() {
             document.getElementById('quiz-modal').style.display = 'none';
         }
-        
+
         document.addEventListener('DOMContentLoaded', function () {
             var addProjectButton = document.getElementById('add-project');
             var projectForm = document.getElementById('project-form');
@@ -179,7 +194,7 @@
             var fileInputLabel = document.querySelector('.file-input-label');
             var fullNameInput = document.getElementById('full-name');
             var projectTitleInput = document.getElementById('project-title');
-        
+
             function resetForm() {
                 fullNameInput.value = '';
                 projectTitleInput.value = '';
@@ -189,38 +204,38 @@
                 fileInputLabel.textContent = 'Choisir un fichier .pdf';
                 fileErrorMessage.style.display = 'none';
             }
-        
+
             addProjectButton.addEventListener('click', function () {
                 projectForm.style.display = 'block';
             });
-        
+
             closeButton.addEventListener('click', function () {
                 projectForm.style.display = 'none';
                 pdfPreview.style.display = 'none';
                 resetForm();
             });
-        
+
             submitButton.addEventListener('click', function (event) {
                 var fullName = document.getElementById('full-name').value.trim();
                 var projectTitle = document.getElementById('project-title').value.trim();
                 var file = fileUpload.files[0];
-        
+
                 if (!fullName || !projectTitle || !file || !file.name.toLowerCase().endsWith('.pdf')) {
                     alert('Veuillez remplir tous les champs et sélectionner un fichier PDF valide.');
                     event.preventDefault();
                 }
             });
-        
+
             loadProjects();
         });
 
         function loadProjects() {
             var projects = JSON.parse(localStorage.getItem('projects') || '[]');
-            projects.forEach(function(project, index) {
+            projects.forEach(function (project, index) {
                 addProjectBlock(project.title, project.full_name, project.fileContent, project.fileName, index);
             });
         }
-        
+
         function addProjectBlock(title, fullName, fileContent, fileName, index) {
             var caseContent = document.createElement('div');
             caseContent.classList.add('sector');
@@ -230,7 +245,7 @@
                 <button class="quiz">Quiz</button>
                 <button class="case-study" onclick="window.location.href='/casia/${index}'">Étude de Cas</button>
                 <div class="case-content"></div>`;
-    
+
             var deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-case');
             deleteButton.innerHTML = '&times;';
@@ -243,7 +258,7 @@
             caseContent.appendChild(deleteButton);
             document.querySelector('.main-content').appendChild(caseContent);
         }
-    
+
         function deleteProject(projectId) {
             fetch(`/delete_project/${projectId}`, { method: 'POST' })
                 .then(response => {
@@ -263,4 +278,5 @@
     </script>
     <script src="https://www.chatbase.co/embed.min.js" defer></script>
 </body>
+
 </html>
