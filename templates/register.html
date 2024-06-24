@@ -1,63 +1,42 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Centrale de Cas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/inscription.css') }}">
-</head>
+{% block title %}Inscription{% endblock %}
 
-<body>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    <div class="signup__container">
-        <div class="container__child signup__thumbnail">
-            <div class="thumbnail__logo">
-                <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Logo 1">
+{% block content %}
+<div class="row justify-content-center">
+    <div class="card col-5 m-5 justify-content-center text-bg-light border-dark">
+        <div class="card-body">
+            <h5 class="card-title">Inscription</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Bienvenue sur
+                Centrale de Cas, votre catalyseur d'innovation.</h6>
+            <div class="card-text">
+                Plongez au cœur de
+                recherches enrichissantes et laissez-vous guider vers des solutions
+                pragmatiques et des décisions éclairées à travers nos analyses
+                détaillées.
             </div>
-            <div class="thumbnail__content text-center">
-                <h1 class="heading--primary"><strong>Bienvenue sur Centrale de Cas, votre catalyseur
-                        d'innovation.</strong></h1>
-                <h2 class="heading--secondary"><strong>
-                        Plongez au cœur de recherches enrichissantes et laissez-vous guider vers des solutions
-                        pragmatiques et des décisions éclairées à travers nos analyses détaillées.</h2>
-                </strong>
-            </div>
-            <div class="signup__overlay"></div>
-        </div>
-        <div class="container__child signup__form">
+            <hr>
             <form action="" method="post" novalidate>
-                {{ form.hidden_tag() }}
-                <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username(size=32) }}
-                </p>
-                <p>
-                    {{ form.email.label }}<br>
-                    {{ form.email(size=32) }}
-                </p>
-                <p>
-                    {{ form.password.label }}<br>
-                    {{ form.password(size=32) }}
-                </p>
-                <p>
-                    {{ form.password_confirmation.label }}<br>
-                    {{ form.password_confirmation(size=32) }}
-                </p>
-                <p>{{ form.submit() }}</p>
+                <fieldset>
+                    {{ form.hidden_tag() }}
+
+                    {{ form.username.label(class='form-label') }}
+                    {{ form.username(class='form-control') }}
+
+                    {{ form.email.label(class='form-label') }}
+                    {{ form.email(class='form-control') }}
+
+                    {{ form.password.label(class='form-label') }}
+                    {{ form.password(class='form-control') }}
+
+                    {{ form.password_confirmation.label(class='form-label') }}
+                    {{ form.password_confirmation(class='form-control') }}
+
+                    <label></label>
+                    {{ form.submit(class='form-control') }}
+                </fieldset>
             </form>
         </div>
     </div>
-</body>
-
-</html>
+</div>
+{% endblock %}
