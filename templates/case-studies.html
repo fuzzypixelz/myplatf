@@ -1,65 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Études de Cas</title>
-</head>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+{% block title %}Études de Cas{% endblock %}
 
-<body>
-    <div id="navbar">
-        <ul>
-            <a href="{{ url_for('index') }}">
-                <li>Accueil</li>
-            </a>
-            <a href="{{ url_for('case_studies') }}">
-                <li>Études de Cas</li>
-            </a>
-            {% if not current_user.is_authenticated %}
-            <a href="{{ url_for('login') }}">
-                <li>Connexion</li>
-            </a>
-            <a href="{{ url_for('register') }}">
-                <li>Inscription</li>
-            </a>
-            {% endif %}
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('logout') }}">
-                <li>Déconnexion</li>
-            </a>
-            {% endif %}
-        </ul>
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-10 row row-cols-1 row-cols-md-2 g-3 p-2">
+        {% for case_study in case_studies %}
+        <div class="col">
+            <div class="card text-bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">{{ case_study.title }}</h5>
+                    <p class="card-text">{{ case_study.description }}</p>
+                    <a href="{{ url_for('case_study', id=case_study.id) }}" class="btn btn-secondary">En savoir
+                        plus</a>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    Ajouté le {{ case_study.date_posted.strftime('%Y-%m-%d') }} par {{ case_study.author }} dans {{
+                    case_study.tag }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="col">
+            <div class="card text-bg-light border-dark">
+                <div class="card-header text-body-secondary">
+                    Créer une Étude de Cas
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('create_case_study') }}" method="post" enctype="multipart/form-data"
+                        novalidate>
+                        <fieldset>
+                            {{ case_study_form.hidden_tag() }}
+
+                            {{ case_study_form.title.label(class='form-label') }}
+                            {{ case_study_form.title(class='form-control') }}
+
+                            {{ case_study_form.description.label(class='form-label') }}
+                            {{ case_study_form.description(class='form-control') }}
+
+                            {{ case_study_form.tag.label(class='form-label') }}
+                            {{ case_study_form.tag(class='form-control') }}
+
+                            {{ case_study_form.pdf_file.label(class='form-label') }}
+                            {{ case_study_form.pdf_file(class='form-control') }}
+
+                            <label></label>
+                            {{ case_study_form.submit(class='form-control') }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <hr><br>
-    {% for case_study in case_studies %}
-    {{ case_study.title }}<br>
-    {{ case_study.date_posted }}<br>
-    {{ case_study.tag }}<br>
-    <a href="{{ url_for('case_study', id=case_study.id) }}">En savoir plus</a><br>
-    <hr><br>
-    {% endfor %}
-    <div>
-        <h3>Créer une Étude de Cas</h3>
-        <form action="{{ url_for('create_case_study') }}" method="post" enctype="multipart/form-data" novalidate>
-            {{ case_study_form.hidden_tag() }}
-            <p>
-                {{ case_study_form.title.label }}<br>
-                {{ case_study_form.title(size=32) }}
-            </p>
-            <p>
-                {{ case_study_form.pdf_file.label }}<br>
-                {{ case_study_form.pdf_file(size=32) }}
-            </p>
-            <p>
-                {{ case_study_form.tag.label }}<br>
-                {{ case_study_form.tag(size=32) }}
-            </p>
-            <p>{{ case_study_form.submit() }}</p>
-        </form>
-    </div>
-
-</body>
-
-</html>
+</div>
+{% endblock %}

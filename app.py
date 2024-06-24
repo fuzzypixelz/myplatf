@@ -36,6 +36,7 @@ db = SQLAlchemy()
 
 # NOTE: This is a token used to protect the form against CSRF attacks
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or 'do-not-use-this-in-production' 
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -70,6 +71,7 @@ class CaseStudy(db.Model):
     title = db.Column(db.String(100))
     pdf_file_text = db.Column(db.Text)
     pdf_file_path = db.Column(db.Text)
+    description = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
     tag = db.Column(db.String(256))
@@ -101,6 +103,7 @@ class RegisterForm(FlaskForm):
 
 class CaseStudyCreationForm(FlaskForm):
     title = StringField('Titre', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
     tag = StringField('Sujet', validators=[DataRequired()])
     pdf_file = FileField('Fichier PDF', validators=[FileRequired()])
     submit = SubmitField('Enregistrer')
@@ -235,7 +238,15 @@ def create_case_study():
     f.save(path)
     text = extract_text_from_pdf(path)
     content = generate_case_study(text)
-    study = CaseStudy(title=form.title.data, pdf_file_text=text, pdf_file_path=path, tag=form.tag.data, content=content)
+    study = CaseStudy(
+        title=form.title.data,
+        pdf_file_text=text, 
+        pdf_file_path=path, 
+        tag=form.tag.data, 
+        description=form.description.data,
+        author_id=current_user.id,
+        content=content
+    )
     db.session.add(study)
     db.session.commit()
 
