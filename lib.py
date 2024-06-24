@@ -2,8 +2,7 @@
 import PyPDF2
 import openai
 import tiktoken
-# Configuration API
-openai.api_key = 'sk'
+
 # Fonction pour compter les tokens
 def count_tokens(messages, model="gpt-3.5-turbo"):
     encoding = tiktoken.encoding_for_model(model)

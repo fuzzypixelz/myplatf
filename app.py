@@ -2,17 +2,13 @@ from datetime import datetime
 from typing import Optional
 import os
 import os.path
-import hashlib
 
 import openai
 
 from lib import extract_text_from_pdf, generate_case_study, generate_quiz
-import click
-import PyPDF2
 import tiktoken
 
-from flask import Flask, render_template, request, url_for, redirect, flash
-from flask.cli import with_appcontext
+from flask import Flask, render_template, url_for, redirect, flash
 
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
