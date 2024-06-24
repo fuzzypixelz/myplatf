@@ -203,7 +203,7 @@ def logout():
 def case_studies():
     case_studies = CaseStudy.query.order_by(CaseStudy.date_posted)
     case_study_form = CaseStudyCreationForm()
-    return render_template('case-studies.html', case_studies=case_studies, case_study_form=case_study_form)
+    return render_template('case-studies.html', case_studies=case_studies, case_study_form=case_study_form, current_user=current_user)
 
 @app.route('/create-case-study', methods=['POST'])
 def create_case_study():
@@ -239,6 +239,13 @@ def case_study(id):
     comments = [comment for comment in all_comments if comment.post_id == id]
     comment_form = CommentCreationForm()
     return render_template('case-study.html', case_study=case_study, comments=comments, comment_form=comment_form)
+
+@app.route('/case-study/<int:id>/delete')
+def delete_case_study(id):
+    case_study = CaseStudy.query.get_or_404(id)
+    db.session.delete(case_study)
+    db.session.commit()
+    return redirect(url_for('case_studies'))
 
 @app.route('/case-study/<int:id>/create-comment', methods=['POST'])
 def create_comment(id):

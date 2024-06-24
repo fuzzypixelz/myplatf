@@ -13,6 +13,9 @@
                     <p class="card-text">{{ case_study.description }}</p>
                     <a href="{{ url_for('case_study', id=case_study.id) }}" class="btn btn-secondary">En savoir
                         plus</a>
+                    {% if current_user.id == case_study.author_id %}
+                    <a href="{{ url_for('delete_case_study', id=case_study.id) }}" class="btn btn-danger">Supprimer</a>
+                    {% endif %}
                 </div>
                 <div class="card-footer text-body-secondary">
                     Ajouté le {{ case_study.date_posted.strftime('%Y-%m-%d') }} par {{ case_study.author }} dans
