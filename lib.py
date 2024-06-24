@@ -79,7 +79,7 @@ def generate_quiz(text):
                 - 'choice4' (le quatrième choix)
                 - 'answer' (le numéro de la bonne réponse)
                 Les questions doivent être à propos de l'étude de cas suivante: {text}
-            Vous devez donner au moin 5 questions.
+            Vous devez donner exactement 10 questions.
             Vous devez répondre avec un program JavaScript valide (c'est à dire qu'avec du code)."""
             },
         ]

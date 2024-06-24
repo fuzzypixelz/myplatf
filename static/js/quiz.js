@@ -1,4 +1,4 @@
-document.getElementById("start").addEventListener("click", function() {
+document.getElementById("start").addEventListener("click", function () {
     document.getElementById("guide").style.display = "none";
     document.getElementById("quiz").style.display = "block";
     startQuiz();
@@ -14,7 +14,7 @@ function startQuiz() {
     function displayQuestion(questionIndex) {
         let q = MCQS[questionIndex];
         document.getElementById("questionText").textContent = q.question;
-        document.getElementById("questionNo").textContent = "Question " + (questionIndex + 1);
+        document.getElementById("questionNo").textContent = "Question " + (questionIndex + 1) + " : ";
         document.getElementById("option1").textContent = q.choice1;
         document.getElementById("option2").textContent = q.choice2;
         document.getElementById("option3").textContent = q.choice3;
@@ -61,18 +61,19 @@ function startQuiz() {
         document.getElementById("quiz").style.display = "none";
         document.getElementById("result").style.display = "block";
         document.getElementById("points").textContent = "Votre score est de : " + score + " sur " + totalQuestions;
-    
-        document.getElementById("returnToEnergy").onclick = function() {
-            window.location.href = "/energie.html"; // Assurez-vous que l'URL est correcte
-            window.location.reload(true); // Ajout de la commande pour rafraîchir la page
-        };
-        
-        document.getElementById("startAgain").onclick = function() {
+
+        // document.getElementById("returnToEnergy").onclick = function () {
+        //     window.location.href = "/energie.html"; // Assurez-vous que l'URL est correcte
+        //     window.location.reload(true); // Ajout de la commande pour rafraîchir la page
+        // };
+
+        document.getElementById("startAgain").onclick = function () {
             document.getElementById("result").style.display = "none";
             document.getElementById("guide").style.display = "block";
             startQuiz();
         };
     }
-    
+
     displayQuestion(currentQuestion);
-    startTimer();}    
+    startTimer();
+}    

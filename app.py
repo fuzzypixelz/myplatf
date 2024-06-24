@@ -278,7 +278,9 @@ def take_quiz(id):
     if not current_user.is_authenticated:
         flash('Veuillez vous connecter', 'error')
 
-    return render_template('quiz.html', id=id)
+    case_study = CaseStudy.query.get_or_404(id)
+
+    return render_template('quiz.html', id=id, case_study=case_study)
 
 @app.route('/case-study/<int:id>/take-quiz/questions')
 def quiz_questions(id):
