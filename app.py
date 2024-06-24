@@ -238,7 +238,7 @@ def case_study(id):
     all_comments = Comment.query.order_by(Comment.timestamp)
     comments = [comment for comment in all_comments if comment.post_id == id]
     comment_form = CommentCreationForm()
-    return render_template('case-study.html', case_study=case_study, comments=comments, comment_form=comment_form)
+    return render_template('case-study.html', case_study=case_study, comments=comments, comment_form=comment_form, current_user=current_user)
 
 @app.route('/case-study/<int:id>/delete')
 def delete_case_study(id):
@@ -259,6 +259,13 @@ def create_comment(id):
     db.session.commit()
 
     return redirect(url_for(f'case_study', id=id))
+
+@app.route('/case-study/<int:case_study_id>/delete-comment/<int:comment_id>')
+def delete_comment(case_study_id, comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    db.session.delete(comment)
+    db.session.commit()
+    return redirect(url_for('case_study', id=case_study_id))
 
 @app.route('/case-study/<int:id>/take-quiz')
 def take_quiz(id):
