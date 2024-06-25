@@ -8,7 +8,8 @@
         {{ case_study.title }}
     </div>
     <div class="card-body">
-        <p class="card-text">{{ case_study.description }}</p>
+        <p class="card-title">{{ case_study.description }}</p>
+        <p class="card-text">{{ case_study.content }}</p>
         <a href="{{ url_for('take_quiz', id=case_study.id) }}" class="btn btn-secondary">Passer un quiz</a>
     </div>
     <div class="card-footer text-body-secondary">
